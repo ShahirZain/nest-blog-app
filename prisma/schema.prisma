@@ -15,4 +15,6 @@ model User {
   email String  @unique
   password String
   name  String?
+  createAd DateTime @default(now())
+  updateAd DateTime @default(now())
 }
