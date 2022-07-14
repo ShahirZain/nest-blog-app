@@ -14,6 +14,7 @@ model User {
   id    String     @id @default(uuid())
   email String  @unique
   password String
+  posts Post[]
   name  String?
   createAd DateTime @default(now())
   updateAd DateTime @default(now())
@@ -22,6 +23,18 @@ model User {
 model Category{
   id String @id @default(uuid())
   name String?
+  posts Post[]
+  createAd DateTime @default(now())
+  updateAd DateTime @default(now())
+}
+
+model Post{
+  id String @id @default(uuid())
+  categories Category[]
+  title String?
+  body String?
+  userId String 
+  author User @relation(fields:[userId],references:[id])
   createAd DateTime @default(now())
   updateAd DateTime @default(now())
 }
